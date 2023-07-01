@@ -1,2 +1,2 @@
 # freecodecamp
-My progress and solutins to challanges on freecodecamp.org.
+My progress and some solutions to challanges on freecodecamp.org.
