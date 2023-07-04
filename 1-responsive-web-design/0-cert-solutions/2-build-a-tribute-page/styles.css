@@ -1,0 +1,84 @@
+body {
+    background-color: #0F465B;
+    color: #FFF;
+    font-family: 'Roboto', Verdana;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  main {
+    min-width: 300px;
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  section {
+    margin: 5px auto;
+  }
+  
+  #top {
+    width: 100%;
+    text-align: center;
+    background-color: #2EABDC;
+    padding: 5px;
+    border: 5px solid #2EABDC;
+    border-radius: 10px;
+  }
+  
+  #img-div figcaption { 
+    margin-top: 25px;
+    font-size: 18px;
+  }
+  
+  #img-div {
+    min-height: 40vh;
+    height: 400px;
+    max-height: 50vh;
+    padding: 0;
+    margin-bottom: 0;
+
+    }
+
+  #image {
+    max-width: 100%;
+    max-height: 80%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    border-radius: 15px;
+    filter: blur(1px);
+  }
+
+  #tribute-info > p {
+    text-align: center;
+    font-size: 22px;
+  }
+
+  .divider {
+    /* padding-left: 20px; */
+    width: 20%;
+    margin: 0 auto;
+    border-bottom: 2px solid #5C250F;
+  }
+
+  .career-row p {
+    min-width: 100px;
+    text-align: center;
+  }
+
+  #bottom {
+    padding: 10px;
+    text-align: center;
+  }
+
+  #tribute-link {
+    color: white;
+
+  }
+  #tribute-link:hover {
+    text-decoration: none;
+  }
