@@ -1,0 +1,54 @@
+body {
+    width: 100%;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: #902C00;
+    margin: 0;
+}
+
+h1, p {
+    text-align: center;
+    font-size: 18px;
+}
+
+form {
+    min-width: 400px;
+    max-width: 600px;
+    width: 60vh;
+    margin: 1em auto;
+}
+label {
+    display: block;
+    margin: 5px 5px;
+    font-size: 16px;
+}
+
+input, select, textarea {
+    width: 100%;
+    margin: 5px;
+    min-height: 2em;
+    background-color: #907400;
+    vertical-align: middle;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    width: unset;
+    vertical-align: middle;
+}
+
+input[type="submit"] {
+    display: block;
+    height: 2em;
+    width: 50%;
+    margin: 2em auto;
+}
+
+textarea {
+    margin: 2em auto;
+    display: block;
+}
+
+fieldset {
+    border: none;
+    border-top: 5px solid black;
+    margin-top: 1.5em;
+}

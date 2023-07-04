@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styles.css">
+        <title>Survey Form</title>
+    </head>
+    <body>
+        <h1 id="title">Take our Survey!</h1>
+        <p id="description">Taking our survey will give us valuable feedback on how to improve our value to you as a customer.</p>
+        <form id="survey-form">
+            <fieldset>
+                <p>Please enter some basic details about to you so we can get back about your feedback and/or request.</p>
+                <label id="name-label" for="name">*Enter your full name: <input type="text" id="name" name="name" placeholder="First Last" required /></label>
+                <label id="email-label" for="email">*Enter your email: <input type="email" id="email" name="email" placeholder="johndoe@default.com" required></label>
+                <label id="number-label" for="age">Enter your age: <input type="number" id="number" name="age" min="18" max="115" placeholder="21" /> </label>
+                <label for="dropdown">What is the best day of the week to contact you via email?
+                    <select id="dropdown" name="weekday">
+                        <option id="0">(Select One)</option>
+                        <option id="1">Sunday</option>
+                        <option id="2">Monday</option>
+                        <option id="3">Tuesday</option>
+                        <option id="4">Wednesday</option>
+                        <option id="5">Thursday</option>
+                        <option id="6">Friday</option>
+                        <option id="7">Saturday</option>
+                    </select>
+                </label>
+            </fieldset>
+
+            <fieldset>
+                <p>Do you require our services in the next 5 business days?</p>
+                <label for="radio-1"><input type="radio" id="radio-1" name="attribute" value="yes" /> Yes</label>
+                <label for="radio-2"><input type="radio" id="radio-2" name="attribute" value="no" /> No</label>
+            </fieldset>
+
+            <fieldset>
+                <p>Please check any of our services you are interested in:</p>
+                <label for="checkbox-1"><input type="checkbox" id="checkbox-1" name="services" value="formCreation" /> Website form creation</label>
+                <label for="checkbox-2"><input type="checkbox" id="checkbox-2" name="services" value="creativeWriting" /> Creative writing services</label>
+                <label for="checkbox-3"><input type="checkbox" id="checkbox-3" name="services" value="expertGoogling" /> Expert googling for when you're lost</label>
+                <label for="checkbox-4"><input type="checkbox" id="checkbox-4" name="services" value="costQuoting" /> Quoting costs for things we know about</label>
+                <label for="checkbox-5"><input type="checkbox" id="checkbox-5" name="services" value="consultancy" /> Consultancy on just about anything</label>
+                <label for="textarea-1"><textarea id="textarea-1" name="feedback" rows="4" cols="50" placeholder="Feel free to give us open feedback on this survey and any needs you may have..."></textarea></label>
+            </fieldset>
+            <input type="submit" id="submit" />
+        </form>
+    </body>
+</html>
