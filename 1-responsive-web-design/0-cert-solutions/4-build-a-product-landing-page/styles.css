@@ -1,0 +1,173 @@
+:root {
+    --complementary-color1: #0A4C46;
+    --complementary-color2: #250A4C;
+}
+
+@media (max-width: 700px) {
+    header, body {
+        font-size: 16px !important;
+    }
+    #title {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    #nav-bar {
+        min-width: 700px;
+        width: 100%;
+        padding-top: 20px;
+        min-height: 110px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        display: block;
+        overflow-y: scroll;
+    }
+
+    header {
+        min-height: 110px;
+    }
+
+    main { margin-top: 120px; }
+}
+
+header, body {
+    width: 70%;
+    min-width: 750px;
+    margin: 10px auto;
+    background-color: #4B0A10;
+    color: ghostwhite;
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+}
+
+header {
+    width: 100%;
+    min-height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+body {
+    margin-top: 90px
+}
+
+#title {
+    align-items: center;
+
+}
+#title h1 {
+    margin: 2px;
+    display: inline;
+    align-items: center;
+}
+
+#nav-bar {
+    display: flex;
+    min-width: 60%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+a {
+    text-decoration: none;
+    vertical-align: middle;
+    color: var(--complementary-color1);
+    font-size: 24px;
+}
+
+#form {
+    text-align: center;
+    margin: 0 auto;
+}
+
+#form input[type="email"] {
+    min-width: 25%;
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+#form input[type="submit"] {
+    border: 15px solid var(--complementary-color1);
+    background-color: var(--complementary-color1);
+    color: ghostwhite;
+}
+
+section {
+    margin: 50px auto;
+}
+
+section h1 {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+section > p {
+    text-align: center;
+}
+
+#quotes {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+quote {
+    padding: 20px 0 20px 20px;
+    min-width: 25%;
+    max-width: 30%;
+    font-style: italic;
+}
+.quote > span {
+    justify-content: flex-end;
+}
+
+quote::before, .quotee::before {
+    font-size: 2em;
+    content: "\"";
+    color: #0A4C46;
+    font-weight: 500;
+}
+
+#prices {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.price {
+    padding: 10px;
+    min-width: 200px;
+    min-height: 200px;
+    border: solid 7px var(--complementary-color1);
+    text-align: center;
+    align-items: center;
+}
+
+.dollar::before {
+    content: "$ ";
+    font-size: 125%;
+    color: #000;
+}
+
+#video {
+    display: flex;
+    justify-content: center;
+    min-width: 750px;
+    width: 75%;
+    margin: 10px auto;
+}
+
+footer {
+    min-width: 33%;
+    max-width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border-top: 1px solid gray;
+}
