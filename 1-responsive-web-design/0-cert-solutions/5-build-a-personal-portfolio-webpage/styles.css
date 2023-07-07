@@ -1,0 +1,100 @@
+/* <!-- walk through of this is mainly step by step, some is my own work from searching css properties, but this is mainly here just for reference / posterity--> */
+
+:root {
+    --color1: #001219;
+    --color2: #a9a29c;
+    --color3: #efefef;
+    --color4: #005f73;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0 0 0 0;
+    padding: 0;
+    color: var(--color3);
+}
+
+header {
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    top: 0;
+    
+    display: flex;
+    justify-content: space-between;
+    
+    background-color: var(--color4);
+}
+
+a { 
+    text-decoration: none;
+    color: var(--color3);
+}
+
+#title {
+    width: 49%;
+    height: 100%;
+}
+
+#navbar {
+    width: 100%;
+    height:100%;
+    font-size: 2em;
+}
+
+.nav-links {
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+}
+
+.nav-links > li {
+    display: flex;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.nav-links > li:hover {
+    background-color: var(--color1);
+}
+
+.nav-links > li > a {
+    margin: 1.5rem;
+}
+
+section { 
+    text-align: center;
+    background-color: var(--color1);
+    margin: 0;
+    padding: 2rem;
+}
+
+#welcome-section {
+    /* box-sizing: border-box; */
+    margin:0;
+    padding: 120px 0 0 0;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    vertical-align: middle;
+    background: linear-gradient(135deg, var(--color1), var(--color1) 67%, var(--color2) 100%);
+    color: var(--color3);
+}
+
+#contact-me {
+    background-color:  var(--color2);
+}
+
+.contact-links {
+    padding: 2rem 2rem;
+}
+
+.contact-links a {
+    font-size: 30px;
+    margin: 5px 20px;
+}
