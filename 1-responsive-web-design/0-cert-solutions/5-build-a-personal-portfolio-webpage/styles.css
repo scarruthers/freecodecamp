@@ -47,7 +47,7 @@ a {
     width: 50%;
     height: 100%;
     margin: 0 auto;
-
+    padding: 0;
     display: flex;
     justify-content: space-evenly;
     list-style-type: none;
@@ -86,6 +86,28 @@ section {
     color: var(--color3);
 }
 
+#project-container {
+    width: 70%;
+    margin: 10px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+
+}
+
+#project-container img {
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.project-tile {
+    margin: 0;
+    padding: 0;
+}
+
 #contact-me {
     background-color:  var(--color2);
 }
@@ -97,4 +119,12 @@ section {
 .contact-links a {
     font-size: 30px;
     margin: 5px 20px;
+}
+
+@media (max-width: 1800px) {
+    #project-container img {
+        max-width: 450px;
+        height: 300px;
+        object-fit: cover;
+    }
 }
