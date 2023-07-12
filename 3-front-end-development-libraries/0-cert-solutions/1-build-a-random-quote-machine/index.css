@@ -1,0 +1,13 @@
+#text::before {
+    content: '"'
+  }
+  
+  #text::after {
+    content: '"'
+  }
+  
+  #quote-box {
+    width: 70%;
+    margin: 0 auto;
+  }
+  
