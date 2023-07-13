@@ -1,0 +1,41 @@
+body {
+    background-color: #050A30;
+}
+
+#full-container {
+    background-color: #000;
+    
+}
+
+#markdown-container, #preview-container {
+
+    background-color: #7EC8E3;
+
+    padding: 20px;
+
+    border: 2px solid #0000FF;
+
+    min-height: 300px;
+    min-height: 50vh;
+
+}
+
+#markdown-container {
+    white-space: pre-wrap;
+}
+
+textarea#editor {
+    min-height: 50vh;
+    font-family: 'Courier New', Courier, monospace;
+    padding-top: 40px;
+    white-space: pre-wrap;
+}
+
+#editor-label {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#preview {
+    white-space: pre-wrap;
+}
