@@ -4,7 +4,7 @@ import QuoteDisplay from './QuoteDisplay';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App d-flex align-items-center">
       <QuoteDisplay />
     </div>
   );

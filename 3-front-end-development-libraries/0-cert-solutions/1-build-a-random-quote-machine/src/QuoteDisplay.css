@@ -3,15 +3,28 @@ body {
 }
 
 #quote-box {
-  
-  min-width: 300px;
+  /* position: relative;
+  top: 25%; */
+  /* min-width: 25%; */
   min-height: 250px;
-  width: 25%;
-  height: 25%;
-  margin: auto;
+  min-width: 300px;
+  max-width: 25%;
 
-  background-color: darkred;
+  margin: 0 auto;
+  margin-top: -2em;
+  padding: 30px;
+
+  background-color: #8B0000;
   border-radius: 10px;
-
-  text-align: center;
+  color: #FFF;
 }
+
+#text {
+  margin-top: 1em;
+}
+
+#author {
+  margin-bottom: 2em;
+  color: #D5D5D5
+}
+

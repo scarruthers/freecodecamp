@@ -1,5 +1,9 @@
 import React from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faQuoteLeft, faQuoteRight } from '@fortawesome/free-solid-svg-icons'
+import { faTwitter } from '@fortawesome/free-brands-svg-icons'
+
 import './QuoteDisplay.css';
 
 // quotes referenced from https://www.goalcast.com/history-quotes/
@@ -39,16 +43,19 @@ class QuoteDisplay extends React.Component {
       }
     }
     
-    newQuote(state) {
+    newQuote() {
       // grab a random quote from quotes and update the state
-        let quoteIndex = Math.round(Math.random() * 100) % quotes.length;
+        let newQuoteIndex = this.state.index;
         
-        // TODO: make sure we don't see the same quote twice in a row
+        // Make sure we don't see the same quote twice in a row
+        while(this.state.index === newQuoteIndex) {
+            newQuoteIndex = Math.round(Math.random() * 100) % quotes.length;
+        }
 
         this.setState({
-            index: quoteIndex,
-            text: quotes[quoteIndex].text,
-            author: quotes[quoteIndex].author
+            index: newQuoteIndex,
+            text: quotes[newQuoteIndex].text,
+            author: quotes[newQuoteIndex].author
         })
     }
     
@@ -57,25 +64,24 @@ class QuoteDisplay extends React.Component {
     }
 
     render() {
-        
+        let tweetLink = "https://twitter.com/intent/tweet?text=\"" + this.state.text + "\"";
       return (
-        <div id="quote-box">
-            <h1 className="text-primary text-center">Share a quote</h1>
-            <div className="row">
-                <div id="text">{this.state.text}</div>
-                <div id="author"> - {this.state.author}</div>
-                <div id="new-quote-button">
-                <button id="new-quote" className="btn btn-primary" onClick={this.newQuote}>Generate new quote</button>
+        <div id="quote-box" className="h4">
+            
+            <div id="text"><p className="text-center"><FontAwesomeIcon icon={faQuoteLeft} /> {this.state.text} <FontAwesomeIcon icon={faQuoteRight} /></p></div>
+            <div id="author"><p className="text-end"> - <cite>{this.state.author}</cite></p></div>
+            
+            <div className="row h6 text-center">
+                <div className="col-6">
+                    <a id="tweet-quote" href={tweetLink} className="btn btn-light" target="_blank"><FontAwesomeIcon icon={faTwitter} /> Tweet</a>
                 </div>
-                <div>
-                <a id="tweet-quote" href="twitter.com/intent/tweet" target="_blank">Share this quote with your Twitter followers</a>
+                <div id="new-quote-button" className="col-6">
+                    <button id="new-quote" className="btn btn-dark" onClick={this.newQuote}>New Quote</button>
                 </div>
             </div>
             </div>
       );
     }
-  }
-
-
+}
 
 export default QuoteDisplay;
