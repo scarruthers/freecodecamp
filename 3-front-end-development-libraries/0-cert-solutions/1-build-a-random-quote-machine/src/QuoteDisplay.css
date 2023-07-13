@@ -1,0 +1,17 @@
+body {
+  background-color: #051923;
+}
+
+#quote-box {
+  
+  min-width: 300px;
+  min-height: 250px;
+  width: 25%;
+  height: 25%;
+  margin: auto;
+
+  background-color: darkred;
+  border-radius: 10px;
+
+  text-align: center;
+}
