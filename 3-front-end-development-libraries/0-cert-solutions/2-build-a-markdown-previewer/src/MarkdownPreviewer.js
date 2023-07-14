@@ -26,6 +26,11 @@ const defaultEditorValue = [
     ">Martin Vorel, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons"
 ].join("\r\n");
 
+marked.use({
+    gfm: true,
+    breaks: true
+});
+
 class MarkdownPreviewer extends React.Component {
     constructor(props) {
         super(props)
