@@ -1,41 +1,78 @@
+/* colors from https://www.canva.com/colors/color-palettes/the-deep-blue/ */
+:root {
+    --mp-darkblue: #050A30;
+    --mp-navyblue: #000C66;
+    --mp-blue: #0000FF;
+    --mp-babyblue: #7EC8E3;
+}
+
 body {
-    background-color: #050A30;
+    background-color: var(--mp-darkblue);
 }
 
 #full-container {
-    background-color: #000;
-    
+    margin-top: 2rem;
 }
 
 #markdown-container, #preview-container {
-
-    background-color: #7EC8E3;
-
-    padding: 20px;
-
-    border: 2px solid #0000FF;
-
+    background-color: var(--mp-babyblue);
+    
     min-height: 300px;
-    min-height: 50vh;
-
+    min-height: 75vh;
+    
+    margin: 10px 1rem;
+    padding: 20px;
+    
+    border: 2px solid var(--mp-blue);
 }
 
-#markdown-container {
-    white-space: pre-wrap;
+#markdown-container > h3, #preview-container > h3 {
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--mp-navyblue);
 }
 
 textarea#editor {
-    min-height: 50vh;
+    background-color: lightgray;
     font-family: 'Courier New', Courier, monospace;
-    padding-top: 40px;
-    white-space: pre-wrap;
+
+    padding: 15px;
 }
 
-#editor-label {
-    font-weight: bold;
-    font-size: 24px;
+#editor, #preview {
+    min-height: 400px;
 }
+
 
 #preview {
-    white-space: pre-wrap;
+    background-color: lightgray;
+    font-family: "Segoe UI", Helvetica, 'Courier Prime', monospace;
+
+    min-height: 50vh;
+    padding: 15px;
 }
+
+#preview > blockquote {
+    margin-left: 2rem;
+    padding-left: 5px;
+    background-color: var(--mp-navyblue);
+    color: white;
+}
+
+blockquote > p::before {
+    content: '"'
+}
+
+blockquote > p::after {
+    content: '"'
+}
+
+#preview > pre {
+    background-color: var(--mp-navyblue);
+    color: white;
+    padding-left: 2rem;
+}
+
+#preview > ul, #preview > ol {
+    margin-left: 2rem;
+}
+
