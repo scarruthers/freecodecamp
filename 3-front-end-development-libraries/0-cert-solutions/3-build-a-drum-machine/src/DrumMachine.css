@@ -17,18 +17,27 @@ body {
     margin: 5px auto;
 }
 
-div#key-container button:nth-child(3n)::after {
-    content: "&#10;&#13;";
-    /* display: block; */
-    width: 10px;
-    height: 10px;
-    background-color: blue;
+div#key-container {
+    background-color: darkred;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* gap: 16px; */
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .drum-pad {
     width: 100px;
     height: 100px;
-    text-align: center;
     vertical-align: middle;
     margin: 1em;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+#display {
+    font-size: 26px;
+    font-weight: bold;
 }
