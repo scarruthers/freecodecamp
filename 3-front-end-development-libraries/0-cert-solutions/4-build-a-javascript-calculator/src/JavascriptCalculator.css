@@ -1,0 +1,23 @@
+body {
+    background-color: #3f3f3f ;
+}
+
+#root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#calculator-container {
+    background-color: ghostwhite;
+
+    position: relative;
+    max-width: 500px;
+    max-height: 750px;
+    width: 33%;
+
+    border: 5px solid black;
+
+    text-align: center;
+}
