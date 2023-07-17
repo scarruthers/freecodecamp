@@ -6,22 +6,22 @@ const AUDIO = [
     {
         key: "Q",
         url: "https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3",
-        description: "Heater Type #1"
+        description: "Heater-Type-1"
     },
     {
         key: "W",
         url: "https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3",
-        description: "Heater Type #2"
+        description: "Heater-Type-2"
     },
     {
         key: "E",
         url: "https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3",
-        description: "Heater Type #1"
+        description: "Heater-Type-3"
     },
     {
         key: "A",
         url: "https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3",
-        description: "Heater Type #4"
+        description: "Heater-Type-4"
     },
     {
         key: "S",
@@ -36,7 +36,7 @@ const AUDIO = [
     {
         key: "Z",
         url: "https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3",
-        description: "Kick 'N Hat"
+        description: "Kick-N-Hat"
     },
     {
         key: "X",
@@ -92,10 +92,8 @@ class DrumMachine extends React.Component {
                     {
                         AUDIO.map(audioInstance => (
                             <div class="xs-col-4">
-                                <button type="button" className="button btn-primary drum-pad border border-black border-3 rounded" onClick={() => this.playSound(audioInstance.key, audioInstance.description)} name={audioInstance.key}>
-                                    <audio id={audioInstance.key} className="clip">
-                                        <source src={audioInstance.url} type="audio/mpeg" />
-                                    </audio>
+                                <button type="button" id={audioInstance.description} className="button btn-primary drum-pad border border-black border-3 rounded" onClick={() => this.playSound(audioInstance.key, audioInstance.description)} name={audioInstance.key}>
+                                    <audio id={audioInstance.key} className="clip" src={audioInstance.url}></audio>
                                     {audioInstance.key}
                                 </button>
                             </div>
