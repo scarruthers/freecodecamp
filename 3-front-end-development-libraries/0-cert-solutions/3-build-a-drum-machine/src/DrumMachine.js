@@ -55,7 +55,7 @@ class DrumMachine extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = { displayText: "Click a button or press the corresponding key!" }
+        this.state = { displayText: "Click or press a key!" }
 
         this.playSound = this.playSound.bind(this);
         this.keyHandler = this.keyHandler.bind(this);
@@ -86,8 +86,8 @@ class DrumMachine extends React.Component {
 
     render() {
         return (
-            <div id="drum-machine" className="row">
-                
+            <div id="drum-machine">
+                <h3>Drum Machine</h3>
                 <div id="key-container" className="text-center border border-3 rounded">
                     {
                         AUDIO.map(audioInstance => (
