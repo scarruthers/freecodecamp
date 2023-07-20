@@ -3,13 +3,16 @@ import React from "react";
 import './JavascriptCalculator.css'
 
 const CONTAINER = "calculator-container";
+
+// default state, also used to reset calculator
 const RESET = {
     display: 0,
     displayLog: "",
     previousNumber: null,
     previousOperator: null,
     lastButtonPushed: null,
-    debugMessage: "No error yet."
+    debugMessage: "No error yet.",
+    eventTracker: ""
 }
 
 const OPERATORS = {
@@ -17,6 +20,28 @@ const OPERATORS = {
     SUBTRACT: "-",
     MULTIPLY: "*",
     DIVIDE: "/"
+}
+
+// map keyboard to calculator button IDs
+const KEYS = {
+    "0": "zero",
+    "1": "one",
+    "2": "two",
+    "3": "three",
+    "4": "four",
+    "5": "five",
+    "6": "six",
+    "7": "seven",
+    "8": "eight",
+    "9": "nine",
+    "/": "divide",
+    "*": "multiply",
+    "-": "subtract",
+    "+": "add",
+    "Escape": "clear",
+    "Backspace": "clear",
+    ".": "decimal",
+    "Enter": "equals"
 }
 
 class JavascriptCalculator extends React.Component {
@@ -28,10 +53,21 @@ class JavascriptCalculator extends React.Component {
     }
 
     componentDidMount() {
-        this.addListener("#" + CONTAINER);
+        // Add our click and keydown listeners
+        this.addClickListener("#" + CONTAINER);
+        this.addKeydownListener();
     }
 
-    addListener(selector) {
+    addKeydownListener() {
+        document.addEventListener('keydown', e => {
+            if(Object.keys(KEYS).includes(e.key)) {
+                let buttonID = KEYS[e.key];
+                document.getElementById(buttonID).click();
+            }
+        });
+    }
+
+    addClickListener(selector) {
         const calculator = document.querySelector(selector);
 
         calculator.addEventListener('click', e => {
@@ -193,6 +229,7 @@ class JavascriptCalculator extends React.Component {
                     <p>previousOperator: {this.state.previousOperator}</p>
                     <p>lastButtonPushed: {this.state.lastButtonPushed}</p>
                     <p>debugMessage: {this.state.debugMessage}</p>
+                    <p>eventTracker: {this.state.eventTracker}</p>
                 </div>
                 <div id={CONTAINER}>
                     <div className="row">
