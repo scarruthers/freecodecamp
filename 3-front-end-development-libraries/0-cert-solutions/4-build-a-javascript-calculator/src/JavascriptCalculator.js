@@ -7,7 +7,7 @@ const CONTAINER = "calculator-container";
 // default state, also used to reset calculator
 const RESET = {
     display: 0,
-    displayLog: "",
+    displayLog: "0",
     previousNumber: null,
     previousOperator: null,
     lastButtonPushed: null,
@@ -54,7 +54,7 @@ class JavascriptCalculator extends React.Component {
 
     componentDidMount() {
         // Add our click and keydown listeners
-        this.addClickListener("#" + CONTAINER);
+        this.addClickListener();
         this.addKeydownListener();
     }
 
@@ -67,72 +67,115 @@ class JavascriptCalculator extends React.Component {
         });
     }
 
-    addClickListener(selector) {
-        const calculator = document.querySelector(selector);
+    addClickListener() {
+        const calculator = document.getElementById(CONTAINER);
 
         calculator.addEventListener('click', e => {
             if(e.target.type === "button") {
                 const datatype = e.target.dataset.type;
                 const value = e.target.value; // is a string
 
-                console.log(value, datatype)
-
                 switch(datatype) {
+
                     case "clear":
-                        // call reset calculator
                         this.resetCalculator();
                     break;
-
                     
                     case "numeral":
-                        // TODO: if lastButtonPushed was equals and now it's a numeral, then we're starting a new calculation
+                        // if lastButtonPushed was equals and now it's a numeral, then we're starting a new calculation
+                        // so reset, wait for reset, then just click the button again
                         if(this.state.lastButtonPushed === "equals") {
-                            this.resetCalculator();
-                        }
-
-                        let newValue;
-
-                        if(this.state.display === 0 || this.state.lastButtonPushed === "operator") {
-                            // Don't append, directly update value
-                            newValue = value;
+                            this.resetCalculator(
+                                () => {
+                                    if(Object.keys(KEYS).includes(value)) {
+                                        let buttonID = KEYS[value];
+                                        document.getElementById(buttonID).click();
+                                    }
+                                }
+                            );
                         } else {
-                            // Append to existing numeral
-                            newValue = this.state.display + value; // string we need to update to number for calculate()
+                            let newDisplay, newDisplayLog;
+    
+                            // value passed from button is a string, parse to float in case of existing decimal points
+
+                            if(this.state.display === 0) {
+                                // Don't append, directly update value
+                                newDisplay = parseFloat(value);
+                                newDisplayLog = value;
+                            } else if(this.state.lastButtonPushed === "operator") {
+                                // check if last operator was simply a negative sign
+                                if(this.state.display === "-") {
+                                    newDisplay = this.state.display + value;
+                                } else {
+                                    newDisplay = parseFloat(value);
+                                }
+                                newDisplayLog = this.state.displayLog + value;
+                            } else {
+                                // Append to existing numeral
+                                newDisplay = this.state.display + value; // string we need to update to number for calculate()
+                                newDisplayLog = this.state.displayLog + value;
+                            }
+    
+                            this.setState({
+                                display: newDisplay, 
+                                displayLog: newDisplayLog,
+                                lastButtonPushed: datatype
+                            })
                         }
 
-                        this.setState({
-                            display: parseFloat(newValue), // value passed from button is a string, parse to float in case of existing decimal points
-                            displayLog: this.state.displayLog + value,
-                            lastButtonPushed: datatype
-                        })
                     break;
 
                     case "operator":
+                        let setArgs;
+
                         if(this.state.lastButtonPushed === "operator") {
-                            // do nothing, unless the just pressed operator is a negative sign, in which case set display to start with a negative sign
+                            // TODO: need to be able to handle 5 * - + 5
                             if(value === OPERATORS.SUBTRACT) {
-                                this.setState({
-                                    debugMessage: "In subtract / negative checking state."
-                                })
+                                // set display to start with a negative sign
+                                setArgs = {
+                                    display: value,
+                                    displayLog: (this.state.display === value ? this.state.displayLog : this.state.displayLog + value),
+                                    previousOperator: this.state.previousOperator // maintain previous operator state
+                                }
+                            } else {
+                                // Override previous operator
+                                setArgs = {
+                                    displayLog: this.state.displayLog.slice(0, this.state.displayLog.length-1) + value,
+                                    lastButtonPushed: datatype,
+                                    previousOperator: value
+                                }
+
+                                // Revert state back to before negative sign was entered
+                                if(this.state.display === OPERATORS.SUBTRACT) {
+                                    setArgs.display = this.state.previousNumber;
+                                }
                             }
                         } else if(this.state.previousOperator === null) {
                             // set previous number and previousOperator to current values
-                            this.setState({
+                            setArgs = {
                                 displayLog: this.state.displayLog + value,
-                                previousNumber: this.state.display,
-                                previousOperator: value,
-                                lastButtonPushed: datatype
-                            })
+                                previousNumber: this.state.display
+                            }
                         } else {
                             const result = this.calculate(this.state.previousNumber, this.state.previousOperator, this.state.display);
-                            this.setState({
+                            setArgs = {
                                 display: result,
                                 displayLog: this.state.displayLog + value, // string concat
-                                previousNumber: result, // should be a number
-                                previousOperator: value,
-                                lastButtonPushed: datatype
-                            })
+                                previousNumber: result // should be a number
+                            }
                         }
+                        
+                        let defaultArgs = {
+                            previousOperator: value,
+                            lastButtonPushed: datatype
+                        }
+
+                        // Combine our default and calculated arguments, overriding default with anything we set
+                        this.setState({
+                            ...defaultArgs,
+                            ...setArgs
+                        })
+
                     break;
 
                     case "equals":
@@ -156,15 +199,14 @@ class JavascriptCalculator extends React.Component {
                     break;
 
                     case "decimal":
-
                         // if last button pushed was an operator, set display to "0."
                         if(this.state.lastButtonPushed === "operator") {
                             this.setState({
                                 display: "0" + value,
-                                displayLog: this.state.displayLog + value,
+                                displayLog: this.state.displayLog + "0" + value,
                                 lastButtonPushed: datatype
                             })
-                        } else if(Number.isInteger(this.state.display)) {
+                        } else if(Number.isInteger(this.state.display) || !this.state.display.includes(".")) {
                             // Number is an integer (has no decimal), so go ahead and append a decimal point
                             this.setState({
                                 display: this.state.display + value, // converts display to string, e.g. "1."
@@ -173,6 +215,9 @@ class JavascriptCalculator extends React.Component {
                             })
                         } else {
                             // do nothing, the number already has a decimal point
+                            this.setState({
+                                eventTracker: "decimal error"
+                            })
                         }
                     break;
 
@@ -215,8 +260,12 @@ class JavascriptCalculator extends React.Component {
 
     }
 
-    resetCalculator() {
-        this.setState(RESET);
+    resetCalculator(callbackFN = null) {
+        if(typeof callbackFN === "function") {
+            this.setState(RESET, callbackFN);
+        } else {
+            this.setState(RESET);
+        }
     }
 
     render() {
@@ -225,6 +274,8 @@ class JavascriptCalculator extends React.Component {
         return (
             <div>
                 <div id="debug">
+                    <p>display: {this.state.display}</p>
+                    <p>typeof display: {typeof this.state.display}</p>
                     <p>previousNumber: {this.state.previousNumber}, {typeof this.state.previousNumber}</p>
                     <p>previousOperator: {this.state.previousOperator}</p>
                     <p>lastButtonPushed: {this.state.lastButtonPushed}</p>
@@ -256,7 +307,7 @@ class JavascriptCalculator extends React.Component {
                         <div><button type="button" className={buttonClass} data-type="operator" value={OPERATORS.SUBTRACT} id="subtract">{OPERATORS.SUBTRACT}</button></div>
                     </div>
                     <div className="row row-cols-4">
-                        <div><button type="button" className={buttonClass} data-type="clear" value="clear" id="clear" onClick={this.resetCalculator}>C</button></div>
+                        <div><button type="button" className={buttonClass} data-type="clear" value="clear" id="clear">C</button></div>
                         <div><button type="button" className={buttonClass} data-type="numeral" value="0" id="zero">0</button></div>
                         <div><button type="button" className={buttonClass} data-type="decimal" value="." id="decimal">.</button></div>
                         <div><button type="button" className={buttonClass} data-type="operator" value={OPERATORS.ADD} id="add">{OPERATORS.ADD}</button></div>
@@ -271,7 +322,5 @@ class JavascriptCalculator extends React.Component {
         )
     }
 }
-
-
 
 export default JavascriptCalculator;
