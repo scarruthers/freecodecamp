@@ -157,7 +157,7 @@ class Clock extends React.Component {
                     <button type="button" id="reset" onClick={this.resetClock}>Reset</button>
                 </div>
 
-                <audio id="beep" src="./beep.mp3" controls></audio>
+                <audio id="beep" src="https://github.com/scarruthers/freecodecamp/raw/main/3-front-end-development-libraries/0-cert-solutions/5-build-a-25-5-clock/public/beep.mp3" controls></audio>
             </div>
         )
     }
