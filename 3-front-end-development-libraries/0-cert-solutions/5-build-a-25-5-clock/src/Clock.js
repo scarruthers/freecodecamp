@@ -71,8 +71,9 @@ class Clock extends React.Component {
     }
 
     resetClock() {
-        this.resetBeep();
         this.setState(RESET)
+        this.resetBeep();
+        clearInterval(this.tickHandler);
     }
 
     toggleClock() {
