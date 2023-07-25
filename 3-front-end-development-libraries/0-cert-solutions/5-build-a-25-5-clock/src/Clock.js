@@ -126,23 +126,23 @@ class Clock extends React.Component {
     render() {
         return (
             <div id="clock-container">
-                <h1>Clock</h1>
+                <h1>Pomodoro Clock</h1>
                 <div className="row">
                     <div id="break" className="col">
                         <p id="break-label">Break Length:</p>
-                        <p><span id="break-length">{this.state.breakLength}</span> minutes
+                        <p><span id="break-length">{this.state.breakLength}</span> min
                             <span className="break-buttons">
-                                <button type="button" id="break-increment" onClick={() => { this.updateLength("break", 1) }}>+</button>
-                                <button type="button" id="break-decrement" onClick={() => { this.updateLength("break", -1) }}>-</button>
+                                <button type="button" id="break-increment" className="btn btn-dark" onClick={() => { this.updateLength("break", 1) }}><i className="fa-solid fa-plus"></i></button>
+                                <button type="button" id="break-decrement" className="btn btn-dark" onClick={() => { this.updateLength("break", -1) }}><i className="fa-solid fa-minus"></i></button>
                             </span>
                         </p>
                     </div>
                     <div id="session" className="col">
                         <p id="session-label">Session Length:</p>
-                        <p><span id="session-length">{this.state.sessionLength}</span> minutes
+                        <p><span id="session-length">{this.state.sessionLength}</span> min
                             <span className="break-buttons">
-                                <button type="button" id="session-increment" onClick={() => { this.updateLength("session", 1) }}>+</button>
-                                <button type="button" id="session-decrement" onClick={() => { this.updateLength("session", -1) }}>-</button>
+                                <button type="button" id="session-increment" className="btn btn-dark" onClick={() => { this.updateLength("session", 1) }}><i className="fa-solid fa-plus"></i></button>
+                                <button type="button" id="session-decrement" className="btn btn-dark" onClick={() => { this.updateLength("session", -1) }}><i className="fa-solid fa-minus"></i></button>
                             </span>
                         </p>
                     </div>
@@ -150,14 +150,15 @@ class Clock extends React.Component {
                 <div id="timer">
                     <p id="timer-label">{this.state.clockState} time remaining:</p>
                     <h1 id="time-left">{this.renderClock(this.state.clockMinutes, this.state.clockSeconds)}</h1>
+
+                    <div id="controls">
+                        <button type="button" id="start_stop" className="btn btn-success" onClick={this.toggleClock}>{this.state.running ? <i className="fa-solid fa-pause"></i> : <i className='fa-solid fa-play'></i>}</button>
+                        <button type="button" id="reset" className="btn btn-secondary" onClick={this.resetClock}><i className="fa-solid fa-arrow-rotate-left"></i></button>
+                    </div>
                 </div>
 
-                <div id="controls">
-                    <button type="button" id="start_stop" onClick={this.toggleClock}>{this.state.running ? "Pause" : "Play"}</button>
-                    <button type="button" id="reset" onClick={this.resetClock}>Reset</button>
-                </div>
 
-                <audio id="beep" src="https://github.com/scarruthers/freecodecamp/raw/main/3-front-end-development-libraries/0-cert-solutions/5-build-a-25-5-clock/public/beep.mp3" controls></audio>
+                <audio id="beep" src="https://github.com/scarruthers/freecodecamp/raw/main/3-front-end-development-libraries/0-cert-solutions/5-build-a-25-5-clock/public/beep.mp3"></audio>
             </div>
         )
     }
