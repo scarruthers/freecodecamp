@@ -22,3 +22,23 @@ body {
 
     padding: 15px;
 }
+
+#clock-container .row {
+    margin: 20px 2px;
+}
+
+#timer-label::first-letter {
+    text-transform: capitalize;
+}
+
+#time-left {
+    font-weight: bold;
+    /* font-size: 16px; */
+    margin: 15px;
+}
+
+.break-buttons button, #controls button {
+    display: inline;
+    margin: 5px;
+    padding: 2px 10px;
+}
