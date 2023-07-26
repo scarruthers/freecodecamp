@@ -1,0 +1,52 @@
+:root {
+    --main-white: rgb(216, 216, 216);
+}
+
+body {
+    background-color: rgb(0, 7, 31);
+}
+
+#root {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container {
+    background-color: var(--main-white);
+    text-align: center;
+    border: 3px solid black;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px 1px var(--main-white);
+    padding: 15px;
+}
+
+#tooltip {
+    position: relative;
+    top: 0;
+    left: 0;
+    max-width: 150px;
+    background-color: var(--main-white);
+    border: 1px solid black;
+    box-shadow: 0 0 1px 1px black;
+    visibility: hidden;
+    text-align: center;
+    padding: 15px 2px;
+    font-weight: bold;
+    opacity: .85;
+}
+
+#bar-chart {
+    background-color: var(--main-white);
+    /* box-shadow: 0px 0px 10px 5px black; */
+    border: 1px solid gray;
+}
+
+.bar {
+    fill: rgb(145, 145, 145);
+}
+
+.bar:hover {
+    fill: black;
+}
