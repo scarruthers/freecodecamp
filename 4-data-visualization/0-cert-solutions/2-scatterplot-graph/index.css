@@ -1,0 +1,29 @@
+/* :root {
+
+} */
+
+body {
+    background-color: slategray;
+}
+
+#root {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+#container {
+    background-color: ghostwhite;
+    border: 2px solid black;
+    border-radius: 2px;
+}
+
+#scatterplot {
+    width: 400px;
+    height: 400px;
+}
+
+.dot {
+    fill: blue;
+}
