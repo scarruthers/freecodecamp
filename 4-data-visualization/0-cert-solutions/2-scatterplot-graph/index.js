@@ -1,3 +1,5 @@
+// Codepen version https://codepen.io/scarruthers/pen/gOQBJOm
+
 import Scatterplot from './modules/scatterplot.js'
 
 const url = "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json"
