@@ -1,0 +1,42 @@
+body {
+    background-color: darkslategrey;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+#root {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+#tooltip {
+    position: absolute;
+    background-color: blue;
+    visibility: hidden;
+
+    padding: 15px;
+    border-radius: 10px;
+}
+
+#heatmap {
+    min-width: 1000px;
+    min-height: 500px;
+
+    border: 2px solid black;
+    
+    background-color: ghostwhite;
+    opacity: .5;
+}
+
+#title {
+    font-size: 28px;
+}
+
+.cell {
+    fill: red;
+}
+
+.cell:hover {
+    fill: blue;
+}
