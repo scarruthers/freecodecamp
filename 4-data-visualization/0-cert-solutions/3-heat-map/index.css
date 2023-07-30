@@ -20,8 +20,8 @@ body {
 }
 
 #heatmap {
-    min-width: 1000px;
-    min-height: 500px;
+    min-width: 1080px;
+    min-height: 750px;
 
     border: 2px solid black;
     
@@ -34,9 +34,13 @@ body {
 }
 
 .cell {
-    fill: red;
+    /* fill: red; */
 }
 
 .cell:hover {
-    fill: blue;
+    fill: white;
+}
+
+#legend .color {
+    border: 1px solid black;
 }
