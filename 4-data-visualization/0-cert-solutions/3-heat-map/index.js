@@ -51,7 +51,7 @@ class Heatmap {
         this.padding = {
             top: 90,
             right: 30,
-            bottom: 80,
+            bottom: 100,
             left: 80
         };
 
@@ -62,6 +62,10 @@ class Heatmap {
     formatMonth(month) {
         let tmp = new Date().setMonth(month-1);
         return d3.timeFormat("%B")(tmp)
+    }
+
+    formatTemp(temp) {
+        return d3.format(".2f")(temp) + " &#176;" + "C"
     }
 
     // TODO: make sure the ranges are correct
@@ -153,7 +157,7 @@ class Heatmap {
                 .attr("id", "x-axis-label")
                 .attr("fill", "black")
                 .attr("x", "50%")
-                .attr("y", 30)
+                .attr("y", 40)
                 .attr("text-anchor", "middle")
                 .text("Years");
 
@@ -165,7 +169,7 @@ class Heatmap {
             .append("text")
                 .attr("id", "y-axis-label")
                 .attr("fill", "black")
-                .attr("transform", "translate(-50, " + this.height / 2 + ") rotate(-90)")
+                .attr("transform", "translate(-55, " + this.height / 2 + ") rotate(-90)")
                 .text("Months")
 
         // Add title and description
@@ -186,7 +190,7 @@ class Heatmap {
         // Add Legend
         const legend = this.svg.append("g")
             .attr("id", "legend")
-            .attr("transform", "translate(" + (this.width - (this.colors.length*this.legendSquareWidth))/2 + ", " + (this.height - this.legendSquareWidth) + ")")
+            .attr("transform", "translate(" + (this.width - (this.colors.length*this.legendSquareWidth))/2 + ", " + (this.height - this.legendSquareWidth*1.5) + ")")
         
         legend.selectAll("rect")
             .data(this.colors)
@@ -199,5 +203,18 @@ class Heatmap {
                 .attr("y", (d, i) => 0)
                 .attr("fill", (d) => d)
                 .attr("stroke", "black")
+
+        legend.append("text")
+            .attr("text-anchor", "end")
+            .attr("transform", "translate(-10, " + this.legendSquareWidth/1.5 + ")")
+            .html(
+                this.formatTemp(this.varianceRange[0] + this.baseTemp)
+            )
+
+        legend.append("text")
+            .attr("transform", "translate(" + (10 + (this.colors.length*this.legendSquareWidth)) + "," + this.legendSquareWidth/1.5 + ")")
+            .html(
+                this.formatTemp(this.varianceRange[1] + this.baseTemp)
+            )
     }
 }

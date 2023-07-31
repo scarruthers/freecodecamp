@@ -33,9 +33,13 @@ body {
     font-size: 28px;
 }
 
-.cell {
-    /* fill: red; */
+#x-axis-label, #y-axis-label {
+    font-size: 16px;
 }
+
+/* .cell {
+    fill: red;
+} */
 
 .cell:hover {
     fill: white;
