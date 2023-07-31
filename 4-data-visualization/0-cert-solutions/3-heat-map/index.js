@@ -23,18 +23,16 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 class Heatmap {
-    // TODO: rework colors into a better gradient
     colors = [
-        "darkblue",
-        "blue",
-        "teal",
-        "lightblue",
-        "lightgrey",
-        "yellow",
-        "orange",
-        "pink",
-        "red"
+        "#0000B8", // dark blue
+        "#008080", // teal
+        "#ADD8E6", // light blue
+        "#FFFFE0", // light yellow
+        "#FED8B1", // light orange
+        "#FFA500", // orange
+        "#FF0000" // red
     ]
+
     legendSquareWidth = 30;
 
     constructor(svg, json) {
@@ -68,7 +66,6 @@ class Heatmap {
         return d3.format(".2f")(temp) + " &#176;" + "C"
     }
 
-    // TODO: make sure the ranges are correct
     getColor(rangeMin, rangeMax, value, colorArray) {
         let rangeIncrement = (Math.abs(rangeMin) + Math.abs(rangeMax)) / colorArray.length;
         
@@ -110,7 +107,7 @@ class Heatmap {
             .data(this.data)
             .enter()
             .append("rect")
-                .attr("class", "cell") // TODO; add color
+                .attr("class", "cell")
                 .attr("width", cellWidth)
                 .attr("height", cellHeight)
                 .attr("x", (d) => xScale(d.year))
@@ -128,12 +125,9 @@ class Heatmap {
                     .style("left", event.clientX - (this.tooltip.node().clientWidth/2) + "px")
                     .attr("data-year", d.year)
                     .html(
-                        this.formatMonth(d.month) + ", " + d.year +
-                        "<br />" +
-                        // TODO: base + variance
-                        "temperature: " + (this.baseTemp + d.variance) +
-                        "<br />" +
-                        "variance: " + d.variance
+                        this.formatMonth(d.month) + ", " + d.year + "<br />" +
+                        "Temp: " + this.formatTemp(this.baseTemp + d.variance) + "<br />" +
+                        "Variance: " + this.formatTemp(d.variance)
 
                     )
             })
@@ -145,7 +139,6 @@ class Heatmap {
         const xAxis = d3.axisBottom(xScale)
             .tickFormat(d3.format("d"));
         const yAxis = d3.axisLeft(yScale)
-            // .tickSize(10,)
             .tickFormat((d) => this.formatMonth(d));
 
         // Draw x-axis

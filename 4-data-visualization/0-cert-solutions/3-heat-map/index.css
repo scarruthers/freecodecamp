@@ -12,8 +12,13 @@ body {
 
 #tooltip {
     position: absolute;
-    background-color: blue;
+    background-color: darkslategrey;
     visibility: hidden;
+
+    line-height: 1.5em;
+    color: #fff;
+
+    border: 1px solid white;
 
     padding: 15px;
     border-radius: 10px;
@@ -26,7 +31,6 @@ body {
     border: 2px solid black;
     
     background-color: ghostwhite;
-    opacity: .5;
 }
 
 #title {
@@ -36,10 +40,6 @@ body {
 #x-axis-label, #y-axis-label {
     font-size: 16px;
 }
-
-/* .cell {
-    fill: red;
-} */
 
 .cell:hover {
     fill: white;
