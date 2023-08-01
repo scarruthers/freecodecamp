@@ -1,3 +1,5 @@
+// codepen https://codepen.io/scarruthers/pen/jOQXZzx
+
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
 const url = "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/global-temperature.json"
@@ -58,7 +60,7 @@ class Heatmap {
     }
 
     formatMonth(month) {
-        let tmp = new Date().setMonth(month-1);
+        let tmp = new Date(1990, month-1, 1, 1, 1);
         return d3.timeFormat("%B")(tmp)
     }
 
@@ -112,7 +114,7 @@ class Heatmap {
                 .attr("height", cellHeight)
                 .attr("x", (d) => xScale(d.year))
                 .attr("y", (d) => yScale(d.month))
-                .attr("data-month", (d) => d.month)
+                .attr("data-month", (d) => d.month - 1)
                 .attr("data-year", (d) => d.year)
                 .attr("data-temp", (d) => this.baseTemp + d.variance)
                 .attr("fill", (d) => this.getColor(this.varianceRange[0], this.varianceRange[1], d.variance, this.colors))
@@ -157,7 +159,7 @@ class Heatmap {
         // Draw y-axis
         this.svg.append("g")
             .attr("id", "y-axis")
-            .attr("transform", `translate(${this.padding.left}, 0)`)
+            .attr("transform", `translate(${this.padding.left}, ${cellHeight / 2})`)
             .call(yAxis)
             .append("text")
                 .attr("id", "y-axis-label")
