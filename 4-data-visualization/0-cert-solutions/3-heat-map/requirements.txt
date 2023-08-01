@@ -24,9 +24,6 @@ User Story #16: I can mouse over an area and see a tooltip with a corresponding 
 
 User Story #17: My tooltip should have a data-year property that corresponds to the data-year of the active area.
 
-
-^^^ done ^^^
-
 User Story #6: There should be at least 4 different fill colors used for the cells.
 
 User Story #13: My heat map should have a legend with a corresponding id="legend".
@@ -34,6 +31,24 @@ User Story #13: My heat map should have a legend with a corresponding id="legend
 User Story #14: My legend should contain rect elements.
 
 User Story #15: The rect elements in the legend should use at least 4 different fill colors.
+
+Legend:
+    add numbers to legend
+    add space below legend
+    add text to legend 
+        anchor min to left side
+        anchor max to right side
+
+tooltip updates
+    general style
+    temp formatting
+
+^^^ done ^^^
+
+Misc. Todo:
+
+    - Check if it passes tests
+    - consider changing to scale band
 
 
 

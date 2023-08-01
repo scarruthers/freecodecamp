@@ -30,6 +30,14 @@ User Story #11: I can see that the range of the x-axis labels are within the ran
 
 User Story #12: I can see that the range of the y-axis labels are within the range of the actual y-axis data.
 
+Things we need:
+
+- working tooltip
+- label for y axis
+- legend for doping / non doping
+- title at top
+
+
 --- up to here
 
 User Story #13: I can see a legend containing descriptive text that has id="legend".
